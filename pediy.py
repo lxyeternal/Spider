@@ -54,7 +54,7 @@ def get_url(url,headers):       #   首先是获取到主页面所有的主题�
 
             Theme[themestring] = href
 
-
+    print(Theme)
     return  Theme
 
 
@@ -110,6 +110,8 @@ def get_topic_url(url,urldist,headers):    #   获取每一个主题的所有话
                         themeitemurl[themestring] = href
 
         listurl.append(themeitemurl)
+
+    print(listurl)
 
     return listurl
 
@@ -173,9 +175,13 @@ def get_contanturl(url,listurl,headers):        #  获取每个话题的url
 
                         contanturl[Topicstring] = a[0]['href']
 
+                print(contanturl)
+
         contanturllist.append(contanturl)
 
         # print(contanturllist)
+
+    print(contanturllist)
 
     return contanturllist
 
@@ -223,18 +229,21 @@ def get_contant(url,urllist,headers):         #   获取每一个话题的所有
 
                         contantkey = name[0].string.strip()
 
-                    for contantstring in Contant:
+                        contantvalue = Contant[0].string
 
-                        # reply = contantstring.find_all("div",{"class":"message mt-1 break-all"})
+                        contantValue = ''
 
-                        contantvalue = contantstring[0].string.strip()
+                        if (contantvalue != None):
 
+                            contantValue = contantvalue.strip()
 
-                    contant[contantkey] = contantvalue
+            contant[contantkey] = contantValue
 
             print(contant)
 
         contantlist.append(contant)
+
+    print(contantlist)
 
     return contantlist
 
@@ -252,14 +261,11 @@ if __name__ == "__main__":
 
     Theme = get_url(url,headers)
 
-    # lentheme = len(Theme)
-
     topicurl = get_topic_url(url,Theme,headers)
 
     topiccontanturl = get_contanturl(url,topicurl,headers)
 
-
-
+    get_contant(url,topiccontanturl,headers)
 
 
 
