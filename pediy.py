@@ -11,7 +11,7 @@ import re
 
 2018-11-26
 
-author:郭文博
+author:
 
 """
 def get_url(url,headers):       #   首先是获取到主页面所有的主题链接网址
